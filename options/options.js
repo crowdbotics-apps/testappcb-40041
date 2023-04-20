@@ -2,7 +2,7 @@ export const globalOptions = {
   "name": "testappcb-40041",
   "url": "https://testappcb-40041.botics.co",
   "api": "https://testappcb-40041.botics.co/api/v1",
-  "initialRoute": "Untitled1"
+  "initialRoute": "productListing"
 };
 export const modulesOptions = {
   "@modules/app-menu": {
