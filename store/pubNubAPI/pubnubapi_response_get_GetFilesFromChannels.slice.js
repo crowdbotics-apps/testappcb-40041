@@ -1,23 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { apiService } from "./api"
-export const rest_auth_registration_verify_email_create = createAsyncThunk(
-  "verifyEmails/rest_auth_registration_verify_email_create",
+export const pubnubapi_get_v1_files_sub_key_channels_channel_files_list = createAsyncThunk(
+  "pubnubapi_response_get_GetFilesFromChannels/pubnubapi_get_v1_files_sub_key_channels_channel_files_list",
   async payload => {
-    const response = await apiService.rest_auth_registration_verify_email_create(
+    const response = await apiService.pubnubapi_get_v1_files_sub_key_channels_channel_files_list(
       payload
     )
     return response.data
   }
 )
 const initialState = { entities: [], api: { loading: "idle", error: null } }
-const verifyEmailsSlice = createSlice({
-  name: "verifyEmails",
+const pubnubapi_response_get_GetFilesFromChannelsSlice = createSlice({
+  name: "pubnubapi_response_get_GetFilesFromChannels",
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder
       .addCase(
-        rest_auth_registration_verify_email_create.pending,
+        pubnubapi_get_v1_files_sub_key_channels_channel_files_list.pending,
         (state, action) => {
           if (state.api.loading === "idle") {
             state.api.loading = "pending"
@@ -25,16 +25,16 @@ const verifyEmailsSlice = createSlice({
         }
       )
       .addCase(
-        rest_auth_registration_verify_email_create.fulfilled,
+        pubnubapi_get_v1_files_sub_key_channels_channel_files_list.fulfilled,
         (state, action) => {
           if (state.api.loading === "pending") {
-            state.entities.push(action.payload)
+            state.entities = action.payload
             state.api.loading = "idle"
           }
         }
       )
       .addCase(
-        rest_auth_registration_verify_email_create.rejected,
+        pubnubapi_get_v1_files_sub_key_channels_channel_files_list.rejected,
         (state, action) => {
           if (state.api.loading === "pending") {
             state.api.error = action.error
@@ -45,6 +45,6 @@ const verifyEmailsSlice = createSlice({
   }
 })
 export default {
-  rest_auth_registration_verify_email_create,
-  slice: verifyEmailsSlice
+  pubnubapi_get_v1_files_sub_key_channels_channel_files_list,
+  slice: pubnubapi_response_get_GetFilesFromChannelsSlice
 }
